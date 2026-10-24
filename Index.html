@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Elironflix - אתר הסטרימינג האישי שלך"
+    >
+
+    <title>Elironflix</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     SPLASH SCREEN
+     ========================================================= -->
+
+<div id="splashScreen" class="splash-screen">
+
+    <div class="splash-background"></div>
+
+    <div class="splash-content">
+
+        <div class="splash-logo">
+            ELIRON<span>FLIX</span>
+        </div>
+
+        <div class="splash-line"></div>
+
+        <p class="splash-subtitle">
+            עולם של סרטים וסדרות במקום אחד
+        </p>
+
+        <button
+            id="enterButton"
+            class="splash-enter"
+        >
+            כניסה ל־Elironflix
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN APPLICATION
+     ========================================================= -->
+
+<div id="app" class="app hidden">
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                id="mobileMenuButton"
+                class="mobile-menu-button"
+                aria-label="תפריט"
+            >
+                ☰
+            </button>
+
+            <button
+                id="logoButton"
+                class="logo"
+            >
+                ELIRON<span>FLIX</span>
+            </button>
+
+        </div>
+
+
+        <nav
+            id="mainNavigation"
+            class="main-navigation"
+        >
+
+            <button
+                class="nav-link active"
+                data-page="home"
+            >
+                בית
+            </button>
+
+            <button
+                class="nav-link"
+                data-page="movies"
+            >
+                סרטים
+            </button>
+
+            <button
+                class="nav-link"
+                data-page="series"
+            >
+                סדרות
+            </button>
+
+            <button
+                class="nav-link"
+                data-page="categories"
+            >
+                קטגוריות
+            </button>
+
+            <button
+                class="nav-link"
+                data-page="myList"
+            >
+                הרשימה שלי
+            </button>
+
+        </nav>
+
+
+        <div class="topbar-right">
+
+            <div class="search-container">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="חיפוש סרטים וסדרות..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="clearSearch"
+                    class="clear-search hidden"
+                    aria-label="נקה חיפוש"
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <button
+                id="settingsButton"
+                class="header-icon-button"
+                title="הגדרות"
+            >
+                ⚙
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MOBILE NAV
+         ===================================================== -->
+
+    <div
+        id="mobileNavigation"
+        class="mobile-navigation"
+    >
+
+        <button data-page="home">🏠 בית</button>
+        <button data-page="movies">🎬 סרטים</button>
+        <button data-page="series">📺 סדרות</button>
+        <button data-page="categories">🗂️ קטגוריות</button>
+        <button data-page="myList">⭐ הרשימה שלי</button>
+
+    </div>
+
+
+    <!-- =====================================================
+         HOME PAGE
+         ===================================================== -->
+
+    <main id="homePage" class="page">
+
+
+        <!-- HERO -->
+
+        <section
+            id="hero"
+            class="hero"
+        >
+
+            <div
+                id="heroBackground"
+                class="hero-background"
+            ></div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    ⭐ מומלץ לצפייה
+                </div>
+
+                <h1
+                    id="heroTitle"
+                    class="hero-title"
+                >
+                    Elironflix
+                </h1>
+
+                <div
+                    id="heroMeta"
+                    class="hero-meta"
+                ></div>
+
+                <p
+                    id="heroDescription"
+                    class="hero-description"
+                ></p>
+
+                <div class="hero-buttons">
+
+                    <button
+                        id="heroPlay"
+                        class="button primary-button"
+                    >
+                        ▶ התחל לצפות
+                    </button>
+
+                    <button
+                        id="heroInfo"
+                        class="button secondary-button"
+                    >
+                        ⓘ מידע נוסף
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTINUE -->
+
+        <section
+            id="continueSection"
+            class="content-section hidden"
+        >
+
+            <div class="section-title-row">
+
+                <div>
+                    <span class="section-kicker">
+                        ממשיכים מאיפה שעצרת
+                    </span>
+
+                    <h2>
+                        המשך צפייה
+                    </h2>
+                </div>
+
+            </div>
+
+            <div
+                id="continueGrid"
+                class="content-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- RECENT -->
+
+        <section
+            id="recentSection"
+            class="content-section hidden"
+        >
+
+            <div class="section-title-row">
+
+                <div>
+                    <span class="section-kicker">
+                        לאחרונה
+                    </span>
+
+                    <h2>
+                        צפית לאחרונה
+                    </h2>
+                </div>
+
+            </div>
+
+            <div
+                id="recentGrid"
+                class="content-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- ALL CONTENT -->
+
+        <section
+            id="homeCatalogSection"
+            class="content-section"
+        >
+
+            <div class="section-title-row">
+
+                <div>
+                    <span class="section-kicker">
+                        הספרייה שלך
+                    </span>
+
+                    <h2>
+                        סרטים וסדרות
+                    </h2>
+                </div>
+
+                <div class="catalog-controls">
+
+                    <button
+                        class="filter-button active"
+                        data-home-filter="all"
+                    >
+                        הכל
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-home-filter="movie"
+                    >
+                        סרטים
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-home-filter="series"
+                    >
+                        סדרות
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div
+                id="homeGrid"
+                class="content-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- CATEGORIES -->
+
+        <section
+            id="categoriesHomeSection"
+            class="content-section"
+        >
+
+            <div class="section-title-row">
+
+                <div>
+                    <span class="section-kicker">
+                        מצא משהו חדש
+                    </span>
+
+                    <h2>
+                        קטגוריות
+                    </h2>
+                </div>
+
+            </div>
+
+            <div
+                id="homeCategoryGrid"
+                class="category-grid"
+            ></div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         MOVIES PAGE
+         ===================================================== -->
+
+    <main
+        id="moviesPage"
+        class="page secondary-page hidden"
+    >
+
+        <div class="page-header">
+
+            <span class="section-kicker">
+                ELIRONFLIX
+            </span>
+
+            <h1>
+                סרטים
+            </h1>
+
+            <p>
+                כל הסרטים הזמינים בספרייה שלך.
+            </p>
+
+        </div>
+
+        <div class="page-toolbar">
+
+            <span id="moviesCount"></span>
+
+            <select id="movieSort">
+
+                <option value="newest">
+                    החדשים ביותר
+                </option>
+
+                <option value="oldest">
+                    הישנים ביותר
+                </option>
+
+                <option value="az">
+                    א׳–ת׳
+                </option>
+
+                <option value="za">
+                    ת׳–א׳
+                </option>
+
+            </select>
+
+        </div>
+
+        <div
+            id="moviesGrid"
+            class="content-grid large-grid"
+        ></div>
+
+    </main>
+
+
+    <!-- =====================================================
+         SERIES PAGE
+         ===================================================== -->
+
+    <main
+        id="seriesPage"
+        class="page secondary-page hidden"
+    >
+
+        <div class="page-header">
+
+            <span class="section-kicker">
+                ELIRONFLIX
+            </span>
+
+            <h1>
+                סדרות
+            </h1>
+
+            <p>
+                בחר סדרה, עונה ופרק והתחל לצפות.
+            </p>
+
+        </div>
+
+        <div
+            id="seriesGrid"
+            class="content-grid large-grid"
+        ></div>
+
+    </main>
+
+
+    <!-- =====================================================
+         CATEGORIES PAGE
+         ===================================================== -->
+
+    <main
+        id="categoriesPage"
+        class="page secondary-page hidden"
+    >
+
+        <div class="page-header">
+
+            <span class="section-kicker">
+                EXPLORE
+            </span>
+
+            <h1>
+                קטגוריות
+            </h1>
+
+            <p>
+                בחר קטגוריה כדי לראות את התוכן שמתאים לה.
+            </p>
+
+        </div>
+
+        <div
+            id="categoryPageGrid"
+            class="category-grid"
+        ></div>
+
+    </main>
+
+
+    <!-- =====================================================
+         CATEGORY RESULTS PAGE
+         ===================================================== -->
+
+    <main
+        id="categoryResultsPage"
+        class="page secondary-page hidden"
+    >
+
+        <div class="category-results-header">
+
+            <button
+                id="backHomeButton"
+                class="back-button"
+            >
+                ← חזרה
+            </button>
+
+            <div
+                id="categoryResultIcon"
+                class="category-result-icon"
+            >
+                🎬
+            </div>
+
+            <span class="section-kicker">
+                CATEGORY
+            </span>
+
+            <h1 id="categoryResultTitle">
+                קטגוריה
+            </h1>
+
+            <p id="categoryResultDescription">
+                תוכן מהקטגוריה.
+            </p>
+
+        </div>
+
+        <div
+            id="categoryResultGrid"
+            class="content-grid large-grid"
+        ></div>
+
+    </main>
+
+
+    <!-- =====================================================
+         MY LIST PAGE
+         ===================================================== -->
+
+    <main
+        id="myListPage"
+        class="page secondary-page hidden"
+    >
+
+        <div class="page-header">
+
+            <span class="section-kicker">
+                YOUR LIBRARY
+            </span>
+
+            <h1>
+                הרשימה שלי
+            </h1>
+
+            <p>
+                הסרטים והסדרות ששמרת לצפייה מאוחר יותר.
+            </p>
+
+        </div>
+
+        <div
+            id="myListGrid"
+            class="content-grid large-grid"
+        ></div>
+
+        <div
+            id="myListEmpty"
+            class="empty-state hidden"
+        >
+
+            <div class="empty-icon">
+                ☆
+            </div>
+
+            <h2>
+                הרשימה שלך ריקה
+            </h2>
+
+            <p>
+                לחץ על ☆ בכל סרט או סדרה כדי להוסיף אותם לכאן.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         SEARCH PAGE
+         ===================================================== -->
+
+    <main
+        id="searchPage"
+        class="page secondary-page hidden"
+    >
+
+        <div class="page-header">
+
+            <span class="section-kicker">
+                SEARCH
+            </span>
+
+            <h1>
+                תוצאות חיפוש
+            </h1>
+
+            <p id="searchDescription">
+                חיפוש...
+            </p>
+
+        </div>
+
+        <div
+            id="searchGrid"
+            class="content-grid large-grid"
+        ></div>
+
+        <div
+            id="searchEmpty"
+            class="empty-state hidden"
+        >
+
+            <div class="empty-icon">
+                🔎
+            </div>
+
+            <h2>
+                לא נמצאו תוצאות
+            </h2>
+
+            <p>
+                נסה לחפש בשם אחר.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            ELIRON<span>FLIX</span>
+        </div>
+
+        <p>
+            ספריית הסטרימינג האישית שלך
+        </p>
+
+        <p class="footer-small">
+            © 2026 Elironflix
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================================================
+     DETAIL MODAL
+     ========================================================= -->
+
+<div
+    id="detailModal"
+    class="modal hidden"
+>
+
+    <div class="modal-backdrop"></div>
+
+    <div class="detail-modal">
+
+        <button
+            id="detailClose"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <div class="detail-top">
+
+            <div class="detail-poster-container">
+
+                <img
+                    id="detailPoster"
+                    class="detail-poster"
+                    src=""
+                    alt=""
+                >
+
+                <div
+                    id="detailPosterType"
+                    class="detail-type"
+                ></div>
+
+            </div>
+
+            <div class="detail-information">
+
+                <span
+                    id="detailKicker"
+                    class="section-kicker"
+                >
+                    ELIRONFLIX
+                </span>
+
+                <h2 id="detailTitle">
+                    Title
+                </h2>
+
+                <div
+                    id="detailMeta"
+                    class="detail-meta"
+                ></div>
+
+                <p
+                    id="detailDescription"
+                    class="detail-description"
+                ></p>
+
+                <div
+                    id="detailGenres"
+                    class="genre-list"
+                ></div>
+
+                <div class="detail-actions">
+
+                    <button
+                        id="detailPlay"
+                        class="button primary-button"
+                    >
+                        ▶ צפייה
+                    </button>
+
+                    <button
+                        id="detailListButton"
+                        class="button secondary-light-button"
+                    >
+                        ☆ הרשימה שלי
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SERIES AREA -->
+
+        <div
+            id="seriesSelector"
+            class="series-selector hidden"
+        >
+
+            <div class="series-selector-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        SERIES
+                    </span>
+
+                    <h3>
+                        עונות ופרקים
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="seasonButtons"
+                class="season-buttons"
+            ></div>
+
+
+            <div
+                id="episodeList"
+                class="episode-list"
+            ></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     PLAYER MODAL
+     ========================================================= -->
+
+<div
+    id="playerModal"
+    class="player-modal hidden"
+>
+
+    <div class="player-background"></div>
+
+
+    <button
+        id="playerClose"
+        class="player-close"
+    >
+        ×
+    </button>
+
+
+    <!-- CINEMATIC INTRO -->
+
+    <div
+        id="cinematicIntro"
+        class="cinematic-intro"
+    >
+
+        <div class="intro-logo">
+            ELIRON<span>FLIX</span>
+        </div>
+
+        <div
+            id="introTitle"
+            class="intro-title"
+        >
+            עכשיו צופים
+        </div>
+
+        <div
+            id="introSubtitle"
+            class="intro-subtitle"
+        ></div>
+
+    </div>
+
+
+    <!-- VIDEO -->
+
+    <div class="video-container">
+
+        <video
+            id="mainVideo"
+            preload="metadata"
+            playsinline
+        ></video>
+
+
+        <!-- Resume -->
+
+        <div
+            id="resumePrompt"
+            class="resume-prompt hidden"
+        >
+
+            <div class="resume-box">
+
+                <div class="resume-icon">
+                    ▶
+                </div>
+
+                <h2>
+                    להמשיך לצפות?
+                </h2>
+
+                <p>
+                    עצרת ב־<span id="resumeTime">00:00</span>
+                </p>
+
+                <div class="resume-actions">
+
+                    <button
+                        id="resumeButton"
+                        class="button primary-button"
+                    >
+                        המשך צפייה
+                    </button>
+
+                    <button
+                        id="startOverButton"
+                        class="button secondary-button"
+                    >
+                        מההתחלה
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- END SCREEN -->
+
+        <div
+            id="endScreen"
+            class="end-screen hidden"
+        >
+
+            <div class="end-content">
+
+                <div class="end-check">
+                    ✓
+                </div>
+
+                <span class="section-kicker">
+                    FINISHED
+                </span>
+
+                <h2>
+                    סיימת לצפות
+                </h2>
+
+                <p id="endTitle"></p>
+
+                <div
+                    id="nextEpisodeContainer"
+                    class="next-episode-container hidden"
+                >
+
+                    <button
+                        id="nextEpisodeButton"
+                        class="button primary-button"
+                    >
+                        ▶ הפרק הבא
+                    </button>
+
+                </div>
+
+                <div class="end-recommendations">
+
+                    <h3>
+                        אולי תאהב גם
+                    </h3>
+
+                    <div
+                        id="recommendationsGrid"
+                        class="recommendations-grid"
+                    ></div>
+
+                </div>
+
+                <button
+                    id="replayButton"
+                    class="button secondary-button"
+                >
+                    ↻ צפייה חוזרת
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- VIDEO CONTROLS -->
+
+        <div
+            id="videoControls"
+            class="video-controls"
+        >
+
+            <div class="video-title-area">
+
+                <div
+                    id="playerTitle"
+                    class="player-title"
+                ></div>
+
+                <div
+                    id="playerSubtitle"
+                    class="player-subtitle"
+                ></div>
+
+            </div>
+
+
+            <div class="timeline">
+
+                <span id="currentTime">
+                    00:00
+                </span>
+
+                <input
+                    id="seekBar"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="0"
+                    step="0.1"
+                >
+
+                <span id="duration">
+                    00:00
+                </span>
+
+            </div>
+
+
+            <div class="control-row">
+
+                <div class="control-left">
+
+                    <button
+                        id="playPause"
+                        class="video-control-button"
+                    >
+                        ▶
+                    </button>
+
+                    <button
+                        id="muteButton"
+                        class="video-control-button"
+                    >
+                        🔊
+                    </button>
+
+                    <input
+                        id="volumeBar"
+                        type="range"
+                        min="0"
+                        max="1"
+                        value="1"
+                        step="0.05"
+                    >
+
+                </div>
+
+
+                <div class="control-right">
+
+                    <select
+                        id="speedSelect"
+                        class="speed-select"
+                    >
+
+                        <option value="0.75">
+                            0.75x
+                        </option>
+
+                        <option value="1" selected>
+                            1x
+                        </option>
+
+                        <option value="1.25">
+                            1.25x
+                        </option>
+
+                        <option value="1.5">
+                            1.5x
+                        </option>
+
+                        <option value="2">
+                            2x
+                        </option>
+
+                    </select>
+
+                    <button
+                        id="fullscreenButton"
+                        class="video-control-button"
+                    >
+                        ⛶
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SETTINGS MODAL
+     ========================================================= -->
+
+<div
+    id="settingsModal"
+    class="modal hidden"
+>
+
+    <div class="modal-backdrop"></div>
+
+    <div class="settings-modal">
+
+        <button
+            id="settingsClose"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <span class="section-kicker">
+            SETTINGS
+        </span>
+
+        <h2>
+            הגדרות
+        </h2>
+
+
+        <div class="settings-section">
+
+            <h3>
+                שפה
+            </h3>
+
+            <div class="language-buttons">
+
+                <button
+                    id="heLanguage"
+                    class="language-button active"
+                >
+                    🇮🇱 עברית
+                </button>
+
+                <button
+                    id="enLanguage"
+                    class="language-button"
+                >
+                    🇺🇸 English
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="settings-section">
+
+            <h3>
+                נתוני האתר
+            </h3>
+
+            <button
+                id="clearListButton"
+                class="settings-danger"
+            >
+                מחיקת הרשימה שלי
+            </button>
+
+            <button
+                id="clearHistoryButton"
+                class="settings-danger"
+            >
+                מחיקת היסטוריית צפייה
+            </button>
+
+        </div>
+
+
+        <div class="settings-section settings-info">
+
+            <h3>
+                Elironflix
+            </h3>
+
+            <p>
+                גרסה 2.0
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+     ========================================================= -->
+
+<div
+    id="toastContainer"
+    class="toast-container"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
